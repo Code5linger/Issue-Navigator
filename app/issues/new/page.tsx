@@ -1,16 +1,35 @@
 'use client';
 import { Button, TextField } from '@radix-ui/themes';
 import SimpleMDE from 'react-simplemde-editor';
+import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import 'easymde/dist/easymde.min.css';
-import React from 'react';
+
+interface IssueForm {
+  title: string;
+  description: string;
+}
 
 const NewIssuePage = () => {
+  const { register, control } = useForm<IssueForm>();
+  console.log(register('title'));
+
   return (
-    <div className="max-w-xl space-y-3">
-      <TextField.Root placeholder="Title"></TextField.Root>
-      <SimpleMDE placeholder="Description" />
+    <form className="max-w-xl space-y-3">
+      <TextField.Root
+        placeholder="Title"
+        {...register('title')}
+      ></TextField.Root>
+
+      <Controller
+        name="description"
+        control={control}
+        render={({ field }) => (
+          <SimpleMDE placeholder="Description" {...field} />
+        )}
+      />
+
       <Button>Submit New Issue</Button>
-    </div>
+    </form>
   );
 };
 
