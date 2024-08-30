@@ -1,11 +1,12 @@
 'use client';
 import { Button, Callout, Text, TextField } from '@radix-ui/themes';
 
-import dynamic from 'next/dynamic';
-const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
-  ssr: false,
-  loading: () => <p>Loading...</p>,
-});
+// import dynamic from 'next/dynamic';
+// const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
+//   ssr: false,
+//   loading: () => <p>Loading...</p>,
+// });
+import SimpleMDE from 'react-simplemde-editor';
 import 'easymde/dist/easymde.min.css';
 
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
@@ -71,7 +72,8 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
           name="description"
           control={control}
           defaultValue={issue?.description}
-          render={({ field }) => (
+          rules={{ required: true }}
+          render={({ field: { ref, ...field } }) => (
             <SimpleMDE placeholder="Description" {...field} />
           )}
         />
