@@ -32,18 +32,19 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<IssueForm>({
+  } = useForm<IssueFormData>({
     resolver: zodResolver(createIssueSchema),
   });
   const [error, setError] = useState('');
   const [isSubmitting, setSubmitting] = useState(false);
 
-  const onSubmit: SubmitHandler<IssueForm> = async (data) => {
+  const onSubmit: SubmitHandler<IssueFormData> = async (data) => {
     try {
       setSubmitting(true);
       if (issue) axios.patch('/api/issues/' + issue.id, data);
       else await axios.post('/api/issues', data);
       router.push('/issues');
+      router.refresh();
     } catch (error) {
       setSubmitting(false);
       setError('An unexpected error occurred.');

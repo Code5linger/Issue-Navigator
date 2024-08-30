@@ -1,9 +1,7 @@
-// 'use client';
-import React from 'react';
-import { Table } from '@radix-ui/themes';
-import { Link, IssueStatusBadge } from '@/app/components';
 import prisma from '@/prisma/client';
 import IssueActions from './IssueActions';
+import { Table } from '@radix-ui/themes';
+import { Link, IssueStatusBadge } from '@/app/components';
 
 const IssuePage = async () => {
   const issues = await prisma.issue.findMany();
@@ -29,7 +27,7 @@ const IssuePage = async () => {
               <Table.Cell>
                 <Link
                   href={`/issues/${issue.id}`}
-                  className="text-violet-600 hover:underline"
+                  // className="text-violet-600 hover:underline"
                 >
                   {issue.title}
                 </Link>
@@ -50,5 +48,8 @@ const IssuePage = async () => {
     </div>
   );
 };
+
+export const dynamic = 'force-dynamic';
+// export const revalidate = 0;
 
 export default IssuePage;
