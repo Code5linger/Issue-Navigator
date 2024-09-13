@@ -23,7 +23,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <body>
         <Theme
           // appearance="light"
-          appearance="dark"
+          // appearance="dark"
           accentColor="teal"
           radius="small"
           scaling="95%"
