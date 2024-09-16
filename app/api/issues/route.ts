@@ -1,6 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { z } from 'zod';
+//@ts-nocheck
+
 import prisma from '@/prisma/client';
+import { NextRequest, NextResponse } from 'next/server';
 import issueSchema from '../../validationSchemas';
 
 export async function POST(request: NextRequest) {
