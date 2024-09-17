@@ -2,7 +2,7 @@ import '@radix-ui/themes/styles.css';
 import './globals.css';
 import './theme-config.css';
 import { Inter } from 'next/font/google';
-import { Theme, ThemePanel } from '@radix-ui/themes';
+import { Container, Theme, ThemePanel } from '@radix-ui/themes';
 import type { Metadata } from 'next';
 import NavBar from './NavBar';
 
@@ -29,7 +29,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           scaling="95%"
         >
           <NavBar />
-          <main className="p-5">{children}</main>
+          <main className="p-5">
+            <Container>{children}</Container>
+          </main>
           {/* <ThemePanel /> */}
         </Theme>
       </body>
