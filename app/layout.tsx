@@ -6,6 +6,7 @@ import { Container, Theme, ThemePanel } from '@radix-ui/themes';
 import type { Metadata } from 'next';
 import NavBar from './NavBar';
 import AuthProvider from './auth/Provider';
+import QueryClientProvider from './QueryClientProvider';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -22,21 +23,23 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" className={inter.variable}>
       <body>
-        <AuthProvider>
-          <Theme
-            // appearance="light"
-            // appearance="dark"
-            accentColor="teal"
-            radius="small"
-            scaling="95%"
-          >
-            <NavBar />
-            <main className="p-5">
-              <Container>{children}</Container>
-            </main>
-            {/* <ThemePanel /> */}
-          </Theme>
-        </AuthProvider>
+        <QueryClientProvider>
+          <AuthProvider>
+            <Theme
+              // appearance="light"
+              // appearance="dark"
+              accentColor="teal"
+              radius="small"
+              scaling="95%"
+            >
+              <NavBar />
+              <main className="p-5">
+                <Container>{children}</Container>
+              </main>
+              {/* <ThemePanel /> */}
+            </Theme>
+          </AuthProvider>
+        </QueryClientProvider>
       </body>
     </html>
   );
