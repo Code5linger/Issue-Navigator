@@ -2,7 +2,7 @@
 
 import ErrorMessage from '@/app/components/ErrorMessage';
 import Spinner from '@/app/components/Spinner';
-import { issueSchema } from '@/app/validationSchemas';
+import issueSchema from '@/app/validationSchemas';
 // import issueSchema from '@/app/validationSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Callout, TextField } from '@radix-ui/themes';
@@ -15,10 +15,6 @@ import { z } from 'zod';
 import { Issue } from '@prisma/client';
 
 import SimpleMDE from 'react-simplemde-editor';
-// import dynamic from 'next/dynamic';
-// const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
-//   ssr: false,
-// });
 
 type IssueFormData = z.infer<typeof issueSchema>;
 
