@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 'use client';
 import { Issue, User } from '@prisma/client';
 import { Select } from '@radix-ui/themes';
@@ -29,15 +27,16 @@ const AssigneeSelect = ({ issue }: { issue: Issue }) => {
       defaultValue={issue.assignedToUserId || ''}
       onValueChange={(userId) => {
         axios.patch('/api/issues/' + issue.id, {
-          assignToUserId: userId || null,
+          assignedToUserId: userId || null,
         });
       }}
     >
-      <Select.Trigger placeholder="Assign…" />
+      <Select.Trigger />
+
       <Select.Content>
         <Select.Group>
           <Select.Label>Suggestions</Select.Label>
-          <Select.Item value={null}>Unassigned</Select.Item>
+          <Select.Item value="">Unassigned</Select.Item>
           {users?.map((user) => (
             <Select.Item key={user.id} value={user.id}>
               {user.name}
