@@ -1,7 +1,6 @@
 import authOptions from '@/app/auth/authOptions';
 import NextAuth from 'next-auth';
 
-
 // const prisma = new PrismaClient();
 
 const handler = NextAuth(authOptions);
